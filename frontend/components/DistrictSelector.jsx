@@ -6,7 +6,7 @@ import { t } from '../lib/i18n'
 import { useLocale } from '../store/useLocale'
 import { Button } from './ui/button'
 
-export default function DistrictSelector(){
+export default function DistrictSelector({ onSelectDistrict }){
   const router = useRouter()
   const { lang } = useLocale()
   const [states, setStates] = useState([])
@@ -60,7 +60,7 @@ export default function DistrictSelector(){
         </select>
         <Button 
           disabled={!code} 
-          onClick={()=> router.push(`/dashboard/${code}`)}
+          onClick={()=> onSelectDistrict ? onSelectDistrict(code) : router.push(`/dashboard/${code}`)}
           className="h-auto py-3"
         >
           {t('viewDashboard', lang)}

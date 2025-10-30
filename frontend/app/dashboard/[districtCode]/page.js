@@ -53,17 +53,17 @@ export default function DashboardPage(){
   }
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-amber-50">
       <div className="max-w-7xl mx-auto p-4 md:p-8 space-y-8">
         <header className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-2">{latest.district_name}</h1>
-            <p className="text-muted-foreground text-sm">{t('lastUpdated', lang)}: {relativeTimeLocalized(lastUpdated, lang)}</p>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-2">{latest.district_name}</h1>
+            <p className="text-amber-800/80 text-sm">{t('lastUpdated', lang)}: {relativeTimeLocalized(lastUpdated, lang)}</p>
           </div>
           <div className="flex items-center gap-3">
             <button 
               onClick={()=> router.push('/')} 
-              className="px-5 py-2.5 rounded-lg bg-card border border-border hover:bg-accent transition-colors duration-200 font-medium text-sm shadow-soft"
+              className="px-5 py-2.5 rounded-lg bg-white/80 backdrop-blur-sm border border-amber-200 hover:bg-white transition-colors duration-200 font-medium text-sm shadow-sm text-gray-700 hover:shadow"
             >
               {t('changeDistrict', lang)}
             </button>
@@ -81,20 +81,22 @@ export default function DashboardPage(){
           >
             <CarouselContent>
               <CarouselItem className="md:basis-full">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <MetricCard 
-                    icon={<Users className="w-8 h-8 text-green-600"/>} 
+                    icon={<Users className="w-8 h-8 text-green-700"/>} 
                     value={latest.total_households_worked} 
                     label={t('metrics.totalFamilies', lang)} 
                     trend={current.comparisons.total_households_worked} 
-                    color={colorFor('total_households_worked')} 
+                    color={colorFor('total_households_worked')}
+                    className="bg-white/80 backdrop-blur-sm border border-amber-100 shadow-sm hover:shadow-md transition-shadow"
                   />
                   <MetricCard 
-                    icon={<CalendarCheck2 className="w-8 h-8 text-blue-600"/>} 
+                    icon={<CalendarCheck2 className="w-8 h-8 text-blue-700"/>} 
                     value={latest.average_days_employment} 
                     label={t('metrics.avgDays', lang)} 
                     trend={current.comparisons.average_days_employment} 
-                    color={colorFor('average_days_employment')} 
+                    color={colorFor('average_days_employment')}
+                    className="bg-white/80 backdrop-blur-sm border border-amber-100 shadow-sm hover:shadow-md transition-shadow"
                   />
                 </div>
               </CarouselItem>
